@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "mcpServers": {
+    "memory": {
+      "command": "python3",
+      "args": [
+        "${projectRoot}/mcp-memory-server.py"
+      ]
+    }
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/stop-hook-git-check.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🎭 Agency Agents loaded. Use /agent-name to activate agents. Available: /frontend /backend /devops /qa /security /ai /product /sales /marketing /strategy /lead /data /design /test /api /sre'"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Skill"
+    ]
+  },
+  "agentActivation": {
+    "enabled": true,
+    "configFile": "${projectRoot}/.claude-agents-config.json",
+    "memoryServer": "memory",
+    "shortcuts": {
+      "/frontend": "Frontend developer for UI/UX implementation",
+      "/backend": "Backend architect for system design",
+      "/devops": "DevOps automator for infrastructure",
+      "/qa": "Evidence collector for quality assurance",
+      "/security": "Security engineer for threat assessment",
+      "/ai": "AI engineer for ML/data systems",
+      "/product": "Product manager for strategy",
+      "/sales": "Sales coach for revenue growth",
+      "/marketing": "Content creator for campaigns",
+      "/strategy": "Agents orchestrator for workflow",
+      "/lead": "Software architect for leadership",
+      "/data": "Data engineer for pipelines",
+      "/design": "UX architect for design systems",
+      "/test": "Tool evaluator for testing",
+      "/api": "API tester for endpoint validation",
+      "/sre": "SRE for reliability engineering"
+    }
+  }
+}
